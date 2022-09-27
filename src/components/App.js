@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-function DogSpan({ dog, onDogClick }) {
+function DogSpan({ dogName, onDogClick }) {
   return (<span
     onClick={onDogClick}>
-    {dog}</span>);
+    {dogName}</span>);
 
 }
 
@@ -18,7 +18,7 @@ function DisplayDogsInDogBar({ dogState, onDogClick }) {
       dogState.map((dog) => {
         return <DogSpan
           key={dog.id}
-          dog={dog.name}
+          dogName={dog.name}
           onDogClick={onDogClick} />
       })
     )
