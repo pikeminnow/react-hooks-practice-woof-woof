@@ -8,7 +8,7 @@ function DogSpan({ dog, onDogClick }) {
 }
 
 
-
+////
 function DisplayDogsInDogBar({ dogState, setDogState, onDogClick }) {
 
   useEffect(() => {
