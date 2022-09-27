@@ -8,23 +8,7 @@ function DogSpan({ dog, onDogClick }) {
 }
 
 
-////
-function DisplayDogsInDogBar({ dogState, setDogState, onDogClick }) {
-
-  useEffect(() => {
-    (async () => {
-      const dogData = await fetch(" http://localhost:3001/pups")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setDogState(data);
-          // return data.map((dog) => {
-          //   return <span>{dog}</span>
-          //   // return (<DogSpan dog={dog} onDogClick={onDogClick} />)
-          // })
-        })
-    })();
-  }, []);
+function DisplayDogsInDogBar({ dogState, onDogClick }) {
 
   if (dogState === undefined) {
     return null;
@@ -46,6 +30,23 @@ function DisplayDogsInDogBar({ dogState, setDogState, onDogClick }) {
 function App() {
   const [text, setText] = useState("test title");
   const [dogState, setDogState] = useState();
+  const [selectedDogState, setSelectedDogState] = useState();
+
+
+  // with thanks to https://stackoverflow.com/a/59637014
+  useEffect(() => {
+    (async () => {
+      const dogData = await fetch(" http://localhost:3001/pups")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setDogState(data);
+        })
+    })();
+  }, []);
+
+
+
 
   function onDogClick(dogClickEvent) {
     console.log(dogClickEvent);
@@ -62,7 +63,7 @@ function App() {
       <div id="dog-bar">
         <DisplayDogsInDogBar
           dogState={dogState}
-          setDogState={setDogState}
+          onDogClick={onDogClick}
         />
       </div>
       <div id="dog-summary-container">
