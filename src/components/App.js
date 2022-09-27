@@ -32,7 +32,7 @@ function App() {
   const [dogState, setDogState] = useState();
   const [selectedDogState, setSelectedDogState] = useState();
 
-
+  //
   // with thanks to https://stackoverflow.com/a/59637014
   useEffect(() => {
     (async () => {
